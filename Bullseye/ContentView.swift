@@ -38,13 +38,17 @@ struct ContentView: View {
                 print("Button pressed")
                 self.alertIsVisible = true
                 self.score = self.score + self.pointsForCurrentRound()
+                self.target = Int.random(in: 1...100)
             }) {
                 Text(/*@START_MENU_TOKEN@*/"Hit Me !"/*@END_MENU_TOKEN@*/)
             }.alert(isPresented: $alertIsVisible) { () ->
                 Alert in
                 return Alert(title: Text("Hello there !"),
-                             message: Text("The sliders value is \(pointsForCurrentRound()).\nYou scored \(self.pointsForCurrentRound()) points for this round"),
-                                      dismissButton: .default(Text("Awesome!")))
+                             message: Text("The sliders value is \(sliderValueRounded()).\nYou scored \(self.pointsForCurrentRound()) points for this round"),
+                             dismissButton: .default(Text("Awesome!")){
+                                self.score = self.score + self.pointsForCurrentRound()
+                                self.target = Int.random(in: 1...100)
+                    })
             }
             Spacer()
             
