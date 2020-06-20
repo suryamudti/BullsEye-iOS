@@ -11,13 +11,17 @@ import SwiftUI
 struct ContentView: View {
     
     @State var alertIsVisible: Bool = false
-    @State var whoIsTehereIsVisible: Bool = false
     
     var body: some View {
         VStack {
+            // Target row
             Text("Wellcome to my first app")
                 .fontWeight(.semibold)
                 .foregroundColor(Color.green)
+            
+            // Slider row
+            
+            // Button row
             Button(action: {
                 print("Button pressed")
                 self.alertIsVisible = true
@@ -28,22 +32,12 @@ struct ContentView: View {
                                       message: Text("this is my first pop-up"),
                                       dismissButton: .default(Text("Awesome!")))
             }
-            Button(action: {
-                print("Knock Knock")
-                self.whoIsTehereIsVisible = true
-            }) {
-                Text("Knock Knock !")
-            }.alert(isPresented: $whoIsTehereIsVisible) { () ->
-                Alert in return Alert(title: Text("Who's there ?"),
-                                      message: Text("Litle old Lady,"),
-                                      dismissButton: .default(Text("Litle old lady who ?")))
-            }
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().previewLayout(.fixed(width: 896, height: 414))
     }
 }
