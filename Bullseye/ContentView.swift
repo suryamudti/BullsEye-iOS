@@ -11,10 +11,12 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Text("wellcome to my first app")
+            Text("Wellcome to my first app")
                 .fontWeight(.semibold)
                 .foregroundColor(Color.green)
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+            Button(action: {
+                print("Button pressed")
+            }) {
                 Text(/*@START_MENU_TOKEN@*/"Hit Me !"/*@END_MENU_TOKEN@*/)
             }
         }
