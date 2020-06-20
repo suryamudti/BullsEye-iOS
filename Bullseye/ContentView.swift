@@ -42,7 +42,7 @@ struct ContentView: View {
                 Alert in
                 let roundedValue: Int = Int(self.sliderValue.rounded())
                 return Alert(title: Text("Hello there !"),
-                                      message: Text("The sliders value is \(roundedValue)"),
+                             message: Text("The sliders value is \(roundedValue).\nYou scored \(self.pointsForCurrentRound()) points for this round"),
                                       dismissButton: .default(Text("Awesome!")))
             }
             Spacer()
@@ -65,6 +65,10 @@ struct ContentView: View {
             }.padding(.bottom, 20)
 
         }
+    }
+    
+    func pointsForCurrentRound() -> Int {
+        return 999
     }
 }
 
