@@ -14,12 +14,23 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            Spacer()
             // Target row
-            Text("Wellcome to my first app")
-                .fontWeight(.semibold)
-                .foregroundColor(Color.green)
+            HStack {
+                Text("Put the bullseye as close as you can to: ")
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color.green)
+                Text(/*@START_MENU_TOKEN@*/"100"/*@END_MENU_TOKEN@*/)
+            }
+            Spacer()
             
             // Slider row
+            HStack {
+                Text("1")
+                Slider(value: .constant(50))
+                Text("100")
+            }
+            Spacer()
             
             // Button row
             Button(action: {
@@ -32,6 +43,25 @@ struct ContentView: View {
                                       message: Text("this is my first pop-up"),
                                       dismissButton: .default(Text("Awesome!")))
             }
+            Spacer()
+            
+            // Score row
+            HStack {
+                Button(action: {}){
+                    Text("Start Over")
+                }
+                Spacer()
+                Text("Score:")
+                Text("99999")
+                Spacer()
+                Text("Round")
+                Text("99999")
+                Spacer()
+                Button(action: {}){
+                    Text("Info")
+                }
+            }.padding(.bottom, 20)
+
         }
     }
 }
