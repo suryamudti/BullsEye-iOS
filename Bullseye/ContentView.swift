@@ -40,8 +40,10 @@ struct ContentView: View {
             }) {
                 Text(/*@START_MENU_TOKEN@*/"Hit Me !"/*@END_MENU_TOKEN@*/)
             }.alert(isPresented: $alertIsVisible) { () ->
-                Alert in return Alert(title: Text("Hello there !"),
-                                      message: Text("this is my first pop-up"),
+                Alert in
+                var roundedValue: Int = Int(self.sliderValue.rounded())
+                return Alert(title: Text("Hello there !"),
+                                      message: Text("The sliders value is \(roundedValue)"),
                                       dismissButton: .default(Text("Awesome!")))
             }
             Spacer()
