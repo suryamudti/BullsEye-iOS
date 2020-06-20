@@ -12,6 +12,7 @@ struct ContentView: View {
     
     @State var alertIsVisible: Bool = false
     @State var sliderValue: Double = 50.0
+    @State var target: Int = Int.random(in: 1...100)
     
     var body: some View {
         VStack {
@@ -19,9 +20,7 @@ struct ContentView: View {
             // Target row
             HStack {
                 Text("Put the bullseye as close as you can to: ")
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color.green)
-                Text(/*@START_MENU_TOKEN@*/"100"/*@END_MENU_TOKEN@*/)
+                Text("\(self.target)")
             }
             Spacer()
             
@@ -41,7 +40,7 @@ struct ContentView: View {
                 Text(/*@START_MENU_TOKEN@*/"Hit Me !"/*@END_MENU_TOKEN@*/)
             }.alert(isPresented: $alertIsVisible) { () ->
                 Alert in
-                var roundedValue: Int = Int(self.sliderValue.rounded())
+                let roundedValue: Int = Int(self.sliderValue.rounded())
                 return Alert(title: Text("Hello there !"),
                                       message: Text("The sliders value is \(roundedValue)"),
                                       dismissButton: .default(Text("Awesome!")))
