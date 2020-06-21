@@ -22,6 +22,8 @@ struct ContentView: View {
             // Target row
             HStack {
                 Text("Put the bullseye as close as you can to: ")
+                    .foregroundColor(Color.white)
+                    .shadow(color: Color.black, radius: 5, x: 2, y: 2)
                 Text("\(self.target)")
             }
             Spacer()
@@ -73,6 +75,7 @@ struct ContentView: View {
                 }
             }.padding(.bottom, 20)
         }
+        .background(Image("Background"), alignment: .center)
     }
     
     func sliderValueRounded() -> Int {
