@@ -41,6 +41,14 @@ struct ContentView: View {
         }
     }
     
+    struct ButtonLargeTextStyle: ViewModifier {
+        func body(content: Content) -> some View {
+            return content
+            .foregroundColor(Color.black)
+            .font(Font.custom("Arial Rounded MT bOLD", size: 18))
+        }
+    }
+    
     var body: some View {
         VStack {
             Spacer()
@@ -77,6 +85,7 @@ struct ContentView: View {
                                 self.round = self.round + 1
                     })
             }
+            .background(Image("Button")).modifier(Shadow())
             Spacer()
             
             // Score row
@@ -86,6 +95,7 @@ struct ContentView: View {
                 }){
                     Text("Start Over")
                 }
+                .background(Image("Button")).modifier(Shadow())
                 Spacer()
                 Text("Score:").modifier(LabelStyle())
                 Text("\(score)").modifier(ValueStyle())
@@ -96,6 +106,7 @@ struct ContentView: View {
                 Button(action: {}){
                     Text("Info")
                 }
+                .background(Image("Button")).modifier(Shadow())
             }.padding(.bottom, 20)
         }
         .background(Image("Background"), alignment: .center)
