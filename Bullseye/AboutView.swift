@@ -9,14 +9,41 @@
 import SwiftUI
 
 struct AboutView: View {
-    var body: some View {
-        VStack {
-            Text("🎯 BullsEye 🎯")
-            Text("This is BullsEye, the game where you can win points and earn fame by dragging slider.")
-            Text("Your goal is to put the slider as close as possible to the target value. The closer you are, the more points you score")
-            Text("Enjoy! 😆👍")
+    
+    let beige = Color(red: 255.0 / 255.0, green: 214.0 / 255.0, blue: 179.0 / 255.0)
+    
+    struct AboutHeadingStyle: ViewModifier {
+        func body(content: Content) -> some View {
+            return content
+                .foregroundColor(Color.black)
+                .font(Font.custom("Arial Rounded MT Bold", size: 30))
+                .padding(.top, 20)
+                .padding(.bottom, 20)
         }
-        .navigationBarTitle("About BullsEye")
+    }
+    
+    struct AboutBodyStyle: ViewModifier {
+        func body(content: Content) -> some View {
+            return content
+                .foregroundColor(Color.black)
+                .font(Font.custom("Arial Rounded MT Bold", size: 16))
+                .padding(.leading, 60)
+                .padding(.trailing, 60)
+                .padding(.bottom, 20)
+        }
+    }
+    
+    var body: some View {
+        Group {
+            VStack {
+                Text("🎯 BullsEye 🎯").modifier(AboutHeadingStyle())
+                Text("This is BullsEye, the game where you can win points and earn fame by dragging slider.").modifier(AboutBodyStyle())
+                Text("Your goal is to put the slider as close as possible to the target value. The closer you are, the more points you score").modifier(AboutBodyStyle())
+                Text("Enjoy! 😆👍").modifier(AboutBodyStyle())
+            }
+            .navigationBarTitle("About BullsEye")
+            .background(beige)
+        }.background(Image("Background"))
     }
 
 }
