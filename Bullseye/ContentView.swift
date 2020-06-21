@@ -49,6 +49,14 @@ struct ContentView: View {
         }
     }
     
+    struct ButtonSmallTextStyle: ViewModifier {
+        func body(content: Content) -> some View {
+            return content
+            .foregroundColor(Color.black)
+            .font(Font.custom("Arial Rounded MT bOLD", size: 12))
+        }
+    }
+    
     var body: some View {
         VStack {
             Spacer()
