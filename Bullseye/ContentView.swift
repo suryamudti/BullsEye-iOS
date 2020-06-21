@@ -16,6 +16,8 @@ struct ContentView: View {
     @State var score = 0
     @State var round = 1
     
+    let midnightBlue = Color(red: 0.0 / 255.0, green: 51.0 / 255.0, blue: 102.0 / 255.0)
+    
     struct LabelStyle: ViewModifier {
         func body(content: Content) -> some View {
             return content
@@ -70,7 +72,7 @@ struct ContentView: View {
             // Slider row
             HStack {
                 Text("1").modifier(LabelStyle())
-                Slider(value: self.$sliderValue, in: 1...100)
+                Slider(value: self.$sliderValue, in: 1...100).accentColor(Color.green)
                 Text("100").modifier(LabelStyle())
             }
             Spacer()
@@ -82,7 +84,7 @@ struct ContentView: View {
                 self.score = self.score + self.pointsForCurrentRound()
                 self.target = Int.random(in: 1...100)
             }) {
-                Text(/*@START_MENU_TOKEN@*/"Hit Me !"/*@END_MENU_TOKEN@*/)
+                Text(/*@START_MENU_TOKEN@*/"Hit Me !"/*@END_MENU_TOKEN@*/).modifier(ButtonLargeTextStyle())
             }.alert(isPresented: $alertIsVisible) { () ->
                 Alert in
                 return Alert(title: Text("\(alertTitle())"),
@@ -101,7 +103,10 @@ struct ContentView: View {
                 Button(action: {
                     self.startNewGame()
                 }){
-                    Text("Start Over")
+                    HStack {
+                        Image("StartOverIcon")
+                        Text("Start Over").modifier(ButtonSmallTextStyle())
+                    }
                 }
                 .background(Image("Button")).modifier(Shadow())
                 Spacer()
@@ -112,12 +117,16 @@ struct ContentView: View {
                 Text("\(round)").modifier(ValueStyle())
                 Spacer()
                 Button(action: {}){
-                    Text("Info")
+                    HStack {
+                        Image("InfoIcon")
+                        Text("Info").modifier(ButtonSmallTextStyle())
+                    }
                 }
                 .background(Image("Button")).modifier(Shadow())
             }.padding(.bottom, 20)
         }
         .background(Image("Background"), alignment: .center)
+        .accentColor(midnightBlue)
     }
     
     func sliderValueRounded() -> Int {
